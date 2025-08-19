@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amazon Clone</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+    }
+
+    /* === DESKTOP NAV === */
+    .nav-bar {
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .add-icon {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-search {
+      background-color: white;
+      display: flex;
+      height: 30px;
+      width: 100%;
+      max-width: 620px;
+      margin: 5px 0;
+    }
+
+    .nav-search select,
+    #search,
+    #srch-btn {
+      height: 100%;
+    }
+
+    #search {
+      flex: 1;
+      padding: 0 10px;
+      border: none;
+    }
+
+    #srch-btn {
+      background-color: orange;
+      border: none;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+
+    select {
+      border: none;
+    }
+
+    #list {
+      background-color: black;
+      color: white;
+    }
+
+    .account, .returns, .cart {
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .trolly {
+      font-size: 20px;
+    }
+
+    .cart {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* === MOBILE NAV & MENU === */
+    .nav-bar-2,
+    .mobile-menu {
+      display: none;
+    }
+
+    .nav-bar-2 {
+      justify-content: space-between;
+      align-items: center;
+      background-color: #3e3e3e;
+      color: white;
+      padding: 10px;
+    }
+
+    .nav2-menu {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      flex-direction: column;
+      background-color: #232f3e;
+      color: white;
+      padding: 15px;
+    }
+
+    .mobile-menu p, .mobile-menu select {
+      margin: 10px 0;
+    }
+
+    /* === MAIN CONTENT === */
+    .main img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #fee1bd;
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .home-decors {
+      width: 300px;
+      background-color: white;
+      padding: 15px;
+    }
+
+    .images-home-decore {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+
+    .images-home-decore img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    h4 {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .nav-bar {
+        display: none;
+      }
+
+      .nav-bar-2 {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: none;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu.show {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Desktop Navbar -->
+  <div class="nav-bar">
+    <div class="logo"><img src="https://i.ibb.co/Zz92f7Yh/amazon-logo.png" alt="Amazon Logo"></div>
+    <div class="add">
+      <p>Delivered to</p>
+      <div class="add-icon"><i class="fa-solid fa-location-dot"></i><p>India</p></div>
+    </div>
+    <div class="nav-search">
+      <select><option>All</option></select>
+      <input type="text" id="search" placeholder="Search Amazon">
+      <button id="srch-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="account">
+      <p>Hello, Sign in</p>
+      <select id="list"><option>Account & List</option></select>
+    </div>
+    <div class="returns">
+      <p>Returns</p>
+      <div class="o">& Orders</div>
+    </div>
+    <div class="cart">
+      <div class="trolly"><i class="fa-solid fa-cart-shopping"></i></div>
+      <div class="last"><p>Cart</p></div>
+    </div>
+  </div>
+
+  <!-- Mobile Navbar -->
+  <div class="nav-bar-2">
+    <div class="nav2-menu" onclick="toggleMobileMenu()">
+      <i class="fa-solid fa-bars"></i><p>All</p>
+    </div>
+    <div class="logo">
+      <img src="https://i.ibb.co/Zz92f7Yh/amazon-logo.png" alt="Amazon Logo" style="height: 35px;">
+    </div>
+    <div class="cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="nav-search">
+      <select><option>All</option></select>
+      <input type="text" id="search" placeholder="Search Amazon">
+      <button id="srch-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <p>Hello, Sign in</p>
+    <p>Returns & Orders</p>
+    <p>Your Cart</p>
+    <p>Today Deals</p>
+    <p>Customer Services</p>
+    <p>Registry</p>
+    <p>Gift Cards</p>
+    <p>Sell</p>
+  </div>
+
+  <!-- Hero Banner -->
+  <div class="main">
+    <img src="https://i.ibb.co/Y7VFn0QM/PC-hero-1-2x-1-CB582889946.jpg" alt="Hero Banner">
+  </div>
+
+  <!-- Product Cards -->
+  <div class="body">
+    <div class="home-decors">
+      <h3>Revamp your Home in style</h3>
+      <div class="images-home-decore">
+        <div><img src="https://i.ibb.co/pvFhSKCY/372x232-Home-decor-1-SY232-CB555629502.jpg" alt=""><h4>Vases</h4></div>
+        <div><img src="https://i.ibb.co/6c5ftQvJ/372x232-Home-furnishings-2-SY232-CB555629502.jpg" alt=""><h4>Cushions</h4></div>
+      </div>
+      <div class="images-home-decore">
+        <div><img src="https://i.ibb.co/0RM1GZgn/372x232-Home-storage-1-SY232-CB555629502.jpg" alt=""><h4>Storage</h4></div>
+        <div><img src="https://i.ibb.co/xbx5nJc/372x232-Home-lighting-2-Copy-SY232-CB555629502.jpg" alt=""><h4>Lighting</h4></div>
+      </div>
+    </div>
+
+    <div class="home-decors">
+      <h3>Appliances for your home | Up to 55% off</h3>
+      <div class="images-home-decore">
+        <div><img src="https://i.ibb.co/LdHrXZ6N/Appliances-QC-PC-372x232-B08-RDL6-H79-SY232-CB667322346.jpg" alt=""><h4>AC</h4></div>
+        <div><img src="https://i.ibb.co/Kj7F5BB3/B08345-R1-ZW-372x232-SY232-CB667322346.jpg" alt=""><h4>Fridge</h4></div>
+      </div>
+      <div class="images-home-decore">
+        <div><img src="https://i.ibb.co/LXQHghzm/B07-G5-J5-FYP-SY232-CB667322346.jpg" alt=""><h4>Microwave</h4></div>
+        <div><img src="https://i.ibb.co/JWyGcjmJ/Appliances-QC-PC-186x116-B08-CPQVLZT-SY232-CB667322346.jpg" alt=""><h4>Washing</h4></div>
+      </div>
+    </div>
+
+    <div class="home-decors">
+      <h3>Automotive essentials | Up to 60% off</h3>
+      <div class="images-home-decore">
+        <div><img src="https://i.ibb.co/3mX10sWM/Glasscare2x-SY232-CB410830552.jpg" alt=""><h4>Cleaning</h4></div>
+        <div><img src="https://i.ibb.co/chTHvs3q/Rim-tyrecare2x-SY232-CB410830552.jpg" alt=""><h4>Tyre Care</h4></div>
+      </div>
+      <div class="images-home-decore">
+        <div><img src="https://i.ibb.co/k2XFxnT9/Vega-helmet-372x232-SY232-CB405083904.jpg" alt=""><h4>Helmet</h4></div>
+        <div><img src="https://i.ibb.co/3ynxK90D/Vaccum2x-SY232-CB410830555.jpg" alt=""><h4>Vacuum</h4></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById("mobileMenu").classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>
